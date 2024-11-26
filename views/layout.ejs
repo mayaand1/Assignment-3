@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <%- include('partials/header') %>
+        <h2><%= candy ? 'Edit Candy' : 'Add New Candy' %></h2>
+        <form action="<%= candy ? '/edit-candy/' + candy._id : '/add-candy' %>" method="POST">
+            <label>Name:</label><br>
+            <input type="text" name="name" value="<%= candy ? candy.name : '' %>" required><br>
+            <label>Flavor:</label><br>
+            <input type="text" name="flavor" value="<%= candy ? candy.flavor : '' %>" required><br>
+            <label>Price:</label><br>
+            <input type="number" name="price" value="<%= candy ? candy.price : '' %>" required><br>
+            <label>Stock:</label><br>
+            <input type="number" name="stock" value="<%= candy ? candy.stock : '' %>" required><br>
+            <button type="submit">Submit</button>
+        </form>
+        <%- include('partials/footer') %>
+    </body>
+</html>

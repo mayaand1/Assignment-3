@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Candy Inventory</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h2>Candy Inventory</h2>
+  <form action="/candies/add" method="POST">
+    <input type="text" name="name" placeholder="Name" required />
+    <input type="text" name="flavor" placeholder="Flavor" required />
+    <input type="number" name="price" placeholder="Price" required />
+    <input type="number" name="stock" placeholder="Stock" required />
+    <button type="submit">Add Candy</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Flavor</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% candies.forEach(candy => { %>
+        <tr>
+          <td><%= candy.name %></td>
+          <td><%= candy.flavor %></td>
+          <td><%= candy.price %></td>
+          <td><%= candy.stock %></td>
+          <td>
+            <form action="/candies/update/<%= candy._id %>" method="POST">
+              <button type="submit">Edit</button>
+            </form>
+            <form action="/candies/delete/<%= candy._id %>" method="POST">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+  <div class="button-container">
+    <button onclick="location.href='/'">Go Back</button>
+  </div>
+</body>
+</html>
